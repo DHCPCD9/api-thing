@@ -198,8 +198,9 @@ paths:
                         example: 6
                     
   /api/v2/users/{id}/best:
+    summary: "Get user best scores"
     get:
-      description: "Get user best scores"
+      summary: "Get user best scores"
       parameters: 
         - name: id
           in: path
@@ -210,16 +211,21 @@ paths:
         - name: mode
           description: Gamemode ID, relax is 4
           required: false
+          schema: 
+            type: number
+            enum: [0, 1, 2, 3, 4]
           in: query
-          type: number
-          enum: [0,1,2,3,4]
-        - offset:
+        - name: offset
           description: Offset for pagination
           required: false
+          schema: 
+            type: number
           in: query
-        - limit:
+        - name: limit
           description: Limit for pagination
           required: false
+          schema:
+            type: number
           in: query
       responses:
         200:
@@ -229,147 +235,155 @@ paths:
               schema:
                 type: object
                 properties:
-                ok: 
-                  type: boolean
-                scores: 
-                    type: array
-                    items: 
-                      type: object
-                      properties: 
-                        id: 
-                          type: number
-                          example: 3935
-                        beatmap: 
-                          type: object
-                          properties: 
-                            id: 
-                              type: number
-                              example: 1410860
-                            parent_id: 
-                              type: number
-                              example: 652142
-                            artist: 
-                              type: string
-                              example: MrWeebl
-                            title: 
-                              type: string
-                              example: Narwhals
-                            creator: 
-                              type: string
-                              example: bite you death
-                            version: 
-                              type: string
-                              example: Monodon monoceros
-                            bpm: 
-                              type: number
-                              example: 151
-                            ar: 
-                              type: number
-                              example: 8.7
-                            od: 
-                              type: number
-                              example: 8.2
-                            cs: 
-                              type: number
-                              example: 4.2
-                            hp: 
-                              type: number
-                              example: 5.5
-                            status: 
-                              type: number
-                              example: 2
-                            max_combo: 
-                              type: number
-                              example: 185
-                            total_length: 
-                              type: number
-                              example: 34
-                        user_id: 
-                          type: number
-                          example: 32
-                        accuracy: 
-                          type: number
-                          example: 97.38
-                        count300: 
-                          type: number
-                          example: 122
-                        count100: 
-                          type: number
-                          example: 5
-                        count50: 
-                          type: number
-                          example: 0
-                        count_geki: 
-                          type: number
-                          example: 32
-                        count_katu: 
-                          type: number
-                          example: 3
-                        count_miss: 
-                          type: number
-                          example: 0
-                        total_score: 
-                          type: number
-                          example: 653648
-                        grade: 
-                          type: string
-                          example: S
-                        playmode: 
-                          type: number
-                          example: 0
-                        max_combo: 
-                          type: number
-                          example: 185
-                        mods: 
-                          type: number
-                          example: 64
-                        weighted: 
-                          type: number
-                          example: 100
-                        performance: 
-                          type: number
-                          example: 193.7411989309342
-                        submitted_at: 
-                          type: string
-                          example: 2022-12-30T00:59:52.533
-                        passed: 
-                          type: boolean
+                  ok: 
+                    type: boolean
+                  scores: 
+                      type: array
+                      items: 
+                        type: object
+                        properties: 
+                          id: 
+                            type: number
+                            example: 3935
+                          beatmap: 
+                            type: object
+                            properties: 
+                              id: 
+                                type: number
+                                example: 1410860
+                              parent_id: 
+                                type: number
+                                example: 652142
+                              artist: 
+                                type: string
+                                example: MrWeebl
+                              title: 
+                                type: string
+                                example: Narwhals
+                              creator: 
+                                type: string
+                                example: bite you death
+                              version: 
+                                type: string
+                                example: Monodon monoceros
+                              bpm: 
+                                type: number
+                                example: 151
+                              ar: 
+                                type: number
+                                example: 8.7
+                              od: 
+                                type: number
+                                example: 8.2
+                              cs: 
+                                type: number
+                                example: 4.2
+                              hp: 
+                                type: number
+                                example: 5.5
+                              status: 
+                                type: number
+                                example: 2
+                              max_combo: 
+                                type: number
+                                example: 185
+                              total_length: 
+                                type: number
+                                example: 34
+                          user_id: 
+                            type: number
+                            example: 32
+                          accuracy: 
+                            type: number
+                            example: 97.38
+                          count300: 
+                            type: number
+                            example: 122
+                          count100: 
+                            type: number
+                            example: 5
+                          count50: 
+                            type: number
+                            example: 0
+                          count_geki: 
+                            type: number
+                            example: 32
+                          count_katu: 
+                            type: number
+                            example: 3
+                          count_miss: 
+                            type: number
+                            example: 0
+                          total_score: 
+                            type: number
+                            example: 653648
+                          grade: 
+                            type: string
+                            example: S
+                          playmode: 
+                            type: number
+                            example: 0
+                          max_combo: 
+                            type: number
+                            example: 185
+                          mods: 
+                            type: number
+                            example: 64
+                          weighted: 
+                            type: number
+                            example: 100
+                          performance: 
+                            type: number
+                            example: 193.7411989309342
+                          submitted_at: 
+                            type: string
+                            example: 2022-12-30T00:59:52.533
+                          passed: 
+                            type: boolean
               example: 
-                - id: 3935
-                  beatmap:
-                    id: 1410860
-                    parent_id: 652142
-                    artist: MrWeebl
-                    title: Narwhals
-                    creator: bite you death
-                    version: Monodon monoceros
-                    bpm: 151
-                    ar: 8.7
-                    od: 8.2
-                    cs: 4.2
-                    hp: 5.5
-                    status: 2
-                    max_combo: 185
-                    total_length: 34
-                  user_id: 32
-                  accuracy: 97.38
-                  count300: 122
-                  count100: 5
-                  count50: 0
-                  count_geki: 32
-                  count_katu: 3
-                  count_miss: 0
-                  total_score: 653648
-                  grade: S
-                  playmode: 0
-                  max_combo: 185
-                  mods: 64
-                  weighted: 100
-                  performance: 193.7411989309342
-                  submitted_at: '2022-12-30T00:59:52.533'
-                  passed: true
+                ok: true
+                scores: [
+                  {
+                    id: 3935,
+                    beatmap: {
+                      id: 1410860,
+                      parent_id: 0,
+                      artist: MrWeebl,
+                      title: Narwhals,
+                      creator: bite you death,
+                      version: Monodon monoceros,
+                      bpm: 151,
+                      ar: 8.7,
+                      od: 8.2,
+                      cs: 4.2,
+                      hp: 5.5,
+                      status: 2,
+                      max_combo: 185,
+                      total_length: 34
+                    },
+                    user_id: 2,
+                    accuracy: 97.38,
+                    count300: 122,
+                    count100: 5,
+                    count50: 0,
+                    count_geki: 32,
+                    count_katu: 3,
+                    count_miss: 0,
+                    total_score: 653648,
+                    grade: S,
+                    playmode: 0,
+                    max_combo: 185,
+                    mods: 64,
+                    weighted: 100,
+                    performance: 193.7411989309342,
+                    submitted_at: 2022-12-30T00:59:52.533,
+                    passed: true
+                  }
+                ]
+                  
   /api/v2/users/{id}/recent:
     get:
+      summary: "Get user recent scores"
       description: "Get user recent scores"
       parameters: 
         - name: id
@@ -381,16 +395,21 @@ paths:
         - name: mode
           description: Gamemode ID, relax is 4
           required: false
+          schema: 
+            type: number
+            enum: [0, 1, 2, 3, 4]
           in: query
-          type: number
-          enum: [0,1,2,3,4]
-        - offset:
+        - name: offset
           description: Offset for pagination
           required: false
+          schema: 
+            type: number
           in: query
-        - limit:
+        - name: limit
           description: Limit for pagination
           required: false
+          schema:
+            type: number
           in: query
       responses:
         200:
@@ -400,147 +419,154 @@ paths:
               schema:
                 type: object
                 properties:
-                ok: 
-                  type: boolean
-                scores: 
-                    type: array
-                    items: 
-                      type: object
-                      properties: 
-                        id: 
-                          type: number
-                          example: 3935
-                        beatmap: 
-                          type: object
-                          properties: 
-                            id: 
-                              type: number
-                              example: 1410860
-                            parent_id: 
-                              type: number
-                              example: 652142
-                            artist: 
-                              type: string
-                              example: MrWeebl
-                            title: 
-                              type: string
-                              example: Narwhals
-                            creator: 
-                              type: string
-                              example: bite you death
-                            version: 
-                              type: string
-                              example: Monodon monoceros
-                            bpm: 
-                              type: number
-                              example: 151
-                            ar: 
-                              type: number
-                              example: 8.7
-                            od: 
-                              type: number
-                              example: 8.2
-                            cs: 
-                              type: number
-                              example: 4.2
-                            hp: 
-                              type: number
-                              example: 5.5
-                            status: 
-                              type: number
-                              example: 2
-                            max_combo: 
-                              type: number
-                              example: 185
-                            total_length: 
-                              type: number
-                              example: 34
-                        user_id: 
-                          type: number
-                          example: 32
-                        accuracy: 
-                          type: number
-                          example: 97.38
-                        count300: 
-                          type: number
-                          example: 122
-                        count100: 
-                          type: number
-                          example: 5
-                        count50: 
-                          type: number
-                          example: 0
-                        count_geki: 
-                          type: number
-                          example: 32
-                        count_katu: 
-                          type: number
-                          example: 3
-                        count_miss: 
-                          type: number
-                          example: 0
-                        total_score: 
-                          type: number
-                          example: 653648
-                        grade: 
-                          type: string
-                          example: S
-                        playmode: 
-                          type: number
-                          example: 0
-                        max_combo: 
-                          type: number
-                          example: 185
-                        mods: 
-                          type: number
-                          example: 64
-                        weighted: 
-                          type: number
-                          example: 100
-                        performance: 
-                          type: number
-                          example: 193.7411989309342
-                        submitted_at: 
-                          type: string
-                          example: 2022-12-30T00:59:52.533
-                        passed: 
-                          type: boolean
+                  ok: 
+                    type: boolean
+                  scores: 
+                      type: array
+                      items: 
+                        type: object
+                        properties: 
+                          id: 
+                            type: number
+                            example: 3935
+                          beatmap: 
+                            type: object
+                            properties: 
+                              id: 
+                                type: number
+                                example: 1410860
+                              parent_id: 
+                                type: number
+                                example: 652142
+                              artist: 
+                                type: string
+                                example: MrWeebl
+                              title: 
+                                type: string
+                                example: Narwhals
+                              creator: 
+                                type: string
+                                example: bite you death
+                              version: 
+                                type: string
+                                example: Monodon monoceros
+                              bpm: 
+                                type: number
+                                example: 151
+                              ar: 
+                                type: number
+                                example: 8.7
+                              od: 
+                                type: number
+                                example: 8.2
+                              cs: 
+                                type: number
+                                example: 4.2
+                              hp: 
+                                type: number
+                                example: 5.5
+                              status: 
+                                type: number
+                                example: 2
+                              max_combo: 
+                                type: number
+                                example: 185
+                              total_length: 
+                                type: number
+                                example: 34
+                          user_id: 
+                            type: number
+                            example: 32
+                          accuracy: 
+                            type: number
+                            example: 97.38
+                          count300: 
+                            type: number
+                            example: 122
+                          count100: 
+                            type: number
+                            example: 5
+                          count50: 
+                            type: number
+                            example: 0
+                          count_geki: 
+                            type: number
+                            example: 32
+                          count_katu: 
+                            type: number
+                            example: 3
+                          count_miss: 
+                            type: number
+                            example: 0
+                          total_score: 
+                            type: number
+                            example: 653648
+                          grade: 
+                            type: string
+                            example: S
+                          playmode: 
+                            type: number
+                            example: 0
+                          max_combo: 
+                            type: number
+                            example: 185
+                          mods: 
+                            type: number
+                            example: 64
+                          weighted: 
+                            type: number
+                            example: 100
+                          performance: 
+                            type: number
+                            example: 193.7411989309342
+                          submitted_at: 
+                            type: string
+                            example: 2022-12-30T00:59:52.533
+                          passed: 
+                            type: boolean
               example: 
-                - id: 3935
-                  beatmap:
-                    id: 1410860
-                    parent_id: 652142
-                    artist: MrWeebl
-                    title: Narwhals
-                    creator: bite you death
-                    version: Monodon monoceros
-                    bpm: 151
-                    ar: 8.7
-                    od: 8.2
-                    cs: 4.2
-                    hp: 5.5
-                    status: 2
-                    max_combo: 185
-                    total_length: 34
-                  user_id: 32
-                  accuracy: 97.38
-                  count300: 122
-                  count100: 5
-                  count50: 0
-                  count_geki: 32
-                  count_katu: 3
-                  count_miss: 0
-                  total_score: 653648
-                  grade: S
-                  playmode: 0
-                  max_combo: 185
-                  mods: 64
-                  weighted: 100
-                  performance: 193.7411989309342
-                  submitted_at: '2022-12-30T00:59:52.533'
-                  passed: true
+                ok: true
+                scores: [
+                  {
+                    id: 3935,
+                    beatmap: {
+                      id: 1410860,
+                      parent_id: 0,
+                      artist: MrWeebl,
+                      title: Narwhals,
+                      creator: bite you death,
+                      version: Monodon monoceros,
+                      bpm: 151,
+                      ar: 8.7,
+                      od: 8.2,
+                      cs: 4.2,
+                      hp: 5.5,
+                      status: 2,
+                      max_combo: 185,
+                      total_length: 34
+                    },
+                    user_id: 2,
+                    accuracy: 97.38,
+                    count300: 122,
+                    count100: 5,
+                    count50: 0,
+                    count_geki: 32,
+                    count_katu: 3,
+                    count_miss: 0,
+                    total_score: 653648,
+                    grade: S,
+                    playmode: 0,
+                    max_combo: 185,
+                    mods: 64,
+                    weighted: 100,
+                    performance: 193.7411989309342,
+                    submitted_at: 2022-12-30T00:59:52.533,
+                    passed: true
+                  }
+                ]
   /api/v2/users/{id}/graph:
     get:
+      summary: "Get user graph data"
       description: "Get user graph data (the latest value per month)"
       parameters: 
         - name: id
@@ -553,8 +579,9 @@ paths:
           description: Gamemode ID, relax is 4
           required: false
           in: query
-          type: number
-          enum: [0,1,2,3,4]
+          schema: 
+            type: number
+            enum: [0,1,2,3,4]
       responses:
         200:
           description: Server has processed your request.
